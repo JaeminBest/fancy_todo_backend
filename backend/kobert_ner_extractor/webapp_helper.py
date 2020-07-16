@@ -3,21 +3,24 @@ import json
 import pickle
 import torch
 from gluonnlp.data import SentencepieceTokenizer
-from model.net import KobertCRFViz
-from data_utils.utils import Config
-from data_utils.vocab_tokenizer import Tokenizer
-from data_utils.pad_sequence import keras_pad_fn
+from .model.net import KobertCRFViz
+from .data_utils.utils import Config
+from .data_utils.vocab_tokenizer import Tokenizer
+from .data_utils.pad_sequence import keras_pad_fn
 from pathlib import Path
 
+import os, sys
+CUR_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def load_module():
-    model_dir = Path('./experiments/base_model_with_crf')
+    model_dir = Path(os.path.join(CUR_DIR,'experiments/base_model_with_crf'))
     model_config = Config(json_path=model_dir / 'config.json')
     # load vocab & tokenizer
-    tok_path = "ptr_lm_model/tokenizer_78b3253a26.model"
+    tok_path = os.path.join(CUR_DIR,"ptr_lm_model/tokenizer_78b3253a26.model")
     ptr_tokenizer = SentencepieceTokenizer(tok_path)
 
     with open(model_dir / "vocab.pkl", 'rb') as f:
+        sys.path.append(os.path.abspath(os.path.dirname(__file__)))
         vocab = pickle.load(f)
     tokenizer = Tokenizer(vocab=vocab, split_fn=ptr_tokenizer, pad_fn=keras_pad_fn, maxlen=model_config.maxlen)
 
@@ -31,7 +34,7 @@ def load_module():
 
     # load
     model_dict = model.state_dict()
-    checkpoint = torch.load("./experiments/base_model_with_crf/best-epoch-16-step-1500-acc-0.993.bin",
+    checkpoint = torch.load(os.path.join(CUR_DIR,"experiments/base_model_with_crf/best-epoch-16-step-1500-acc-0.993.bin"),
                             map_location=torch.device('cpu'))
     convert_keys = {}
     for k, v in checkpoint['model_state_dict'].items():

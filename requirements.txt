@@ -18,6 +18,5 @@ tb-nightly
 future
 firebase-admin
 pytorch-crf
-tensorflow
 konlpy
 typing

@@ -1,11 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
-from backend.api.kobert_ner_extractor.webapp_helper import load_module, extract
-
-import sys
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from wsgi import tokenizer, model, decoder_from_res, db
+from ..kobert_ner_extractor.webapp_helper import extract
+from ..wsgi import tokenizer, model, decoder_from_res, db
 import secrets
 
 def healthcheck(request):

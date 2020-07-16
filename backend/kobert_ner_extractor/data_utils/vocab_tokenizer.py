@@ -1,5 +1,4 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-from tensorflow import keras
 import numpy as np
 from konlpy.tag import Twitter
 from collections import Counter
@@ -139,15 +138,6 @@ class Vocabulary(object):
 
         return self.token_to_idx
 
-
-
-# def keras_pad_fn(token_ids_batch, maxlen, pad_id=0, padding='post', truncating='post'):
-#     padded_token_ids_batch = keras.preprocessing.sequence.pad_sequences(token_ids_batch,
-#                                                                         value=pad_id,  # vocab.transform_token2idx(PAD),
-#                                                                         padding=padding,
-#                                                                         truncating=truncating,
-#                                                                         maxlen=maxlen)
-#     return np.array(padded_token_ids_batch)
 
 
 class Tokenizer:

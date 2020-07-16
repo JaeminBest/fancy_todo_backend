@@ -7,6 +7,8 @@ RUN apt-get update
 COPY requirements.txt /home/requirements.txt
 RUN pip install -r requirements.txt
 
+RUN apt install -y default-jre
+
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 VOLUME ["/home"]
 COPY . .

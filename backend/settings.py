@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'backend.api',
+    'backend.kobert_ner_extractor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

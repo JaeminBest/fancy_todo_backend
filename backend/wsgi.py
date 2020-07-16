@@ -15,7 +15,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
 application = get_wsgi_application()
 
-from backend.api.kobert_ner_extractor import load_module
+from .kobert_ner_extractor.webapp_helper import load_module
 tokenizer, model, decoder_from_res = load_module()
 
 import firebase_admin
