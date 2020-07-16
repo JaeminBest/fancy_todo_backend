@@ -1,0 +1,21 @@
+{
+  // Controls if quick suggestions should show up while typing
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  // Enable parameter hints
+  "editor.parameterHints.enabled": true,
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.iconTheme": "vscode-icons",
+  "window.zoomLevel": 0,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.tree.indent": 4,
+  "indentOneSpace.cramReversed": true,
+  "indentOneSpace.workOnSingleLine": true,
+  "indentOneSpace.onlyCompleteRange": false
+}
