@@ -1,4 +1,5 @@
 poligon-*.json
+todo-practice-*.json
 .env
 *.pyc
 __pycache__
